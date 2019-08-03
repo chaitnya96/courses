@@ -116,7 +116,7 @@ class Login extends Component {
               <Row>
                 <Col sm={2} />
                 <Col sm={10}>
-                  <NavLink to="/">Not on Courses yet? Sign-up</NavLink>
+                  <NavLink to="/signup">Not on Courses yet? Sign-up</NavLink>
                 </Col>
               </Row>
             </Container>

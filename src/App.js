@@ -55,11 +55,11 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" name="Signup" component={Signup} />
+          <Route exact path="/signup" name="Signup" component={Signup} />
           <Route path="/login" name="Login" component={Login} />
           <PrivateRoute
             authed={this.state.authed}
-            path="/dashboard"
+            path="/"
             component={Dashboard}
           />
           {userEmail == "admin@admin.uk" && userPassword == password && (

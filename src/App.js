@@ -9,6 +9,7 @@ import AddChapter from "./Components/AddChapter";
 import ViewVideo from "./Components/ViewVideo";
 import ViewChapter from "./Components/ViewChapter";
 import md5 from "md5";
+import PageNotFound from "./PageNotFound";
 
 function PrivateRoute({ component: Component, authed, ...rest }) {
   return (
@@ -55,13 +56,14 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/signup" name="Signup" component={Signup} />
-          <Route path="/login" name="Login" component={Login} />
           <PrivateRoute
+            exact={true}
             authed={this.state.authed}
             path="/"
             component={Dashboard}
           />
+          <Route path="/signup" name="Signup" component={Signup} />
+          <Route path="/login" name="Login" component={Login} />
           {userEmail == "admin@admin.uk" && userPassword == password && (
             <Route
               path="/admin"
@@ -74,6 +76,7 @@ class App extends React.Component {
           )}
           <Route path="/view/:id" component={ViewChapter} />
           <Route path="/chepter/:id" component={ViewVideo} />
+          <Route component={PageNotFound} />
         </Switch>
       </BrowserRouter>
     );

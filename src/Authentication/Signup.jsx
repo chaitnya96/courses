@@ -14,6 +14,7 @@ import {
 import * as Yup from "yup";
 import { withRouter, NavLink } from "react-router-dom";
 import md5 from 'md5'
+import history from "../history";
 
 const SignupSchema = Yup.object().shape({
   // firstName: Yup.string()
@@ -67,12 +68,12 @@ class Signup extends React.Component {
             if (existUsers.length == 0) {
               localStorage.setItem("users", JSON.stringify([user]));
               localStorage.setItem("userEmail",values.email)
-              this.props.history.push("/login");
+              history.push("/login");
             }
             else if (existUsers.filter(d => d.email == values.email).length == 0) {
               localStorage.setItem("users",JSON.stringify([...existUsers, user]));
               localStorage.setItem("userEmail",values.email)
-              this.props.history.push("/login");
+              history.push("/login");
             }
             else {
               setTimeout(() => {

@@ -16,6 +16,7 @@ import {
 import uuid from "uuid";
 import { NavLink, withRouter } from "react-router-dom";
 import VideoListItem from "./VideoListItem";
+import history from "../history";
 
 class AddChapter extends Component {
   constructor(props) {
@@ -50,7 +51,7 @@ class AddChapter extends Component {
           });
     }
     else{
-        this.props.history.push('/')
+        history.push('/')
     }
     
   }

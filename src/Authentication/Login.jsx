@@ -14,6 +14,7 @@ import {
 import * as Yup from "yup";
 import { withRouter, NavLink } from "react-router-dom";
 import md5 from "md5";
+import history from "../history";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,14 +42,14 @@ class Login extends Component {
             ) {
               localStorage.setItem("userEmail", values.email);
               localStorage.setItem("userPassword", md5(values.password));
-              this.props.history.push("/dashboard");
+              history.push("/dashboard");
             } else if (
               values.email == "admin@admin.uk" &&
               values.password == "Chaitnya123"
             ) {
               localStorage.setItem("userEmail", values.email);
               localStorage.setItem("userPassword", md5(values.password));
-              this.props.history.push("/admin");
+              history.push("/admin");
             } else {
               setTimeout(() => {
                 actions.setStatus({ msg: "Account Not Found" });
